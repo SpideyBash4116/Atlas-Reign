@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef0f2;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.panel {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.stat {
+    margin-bottom: 10px;
+}
+
+.statbar {
+    margin-bottom: 15px;
+}
+
+.bar-bg {
+    width: 100%;
+    background: #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 20px;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 50%;
+    background: #4CAF50;
+    transition: width 0.3s;
+}
+
+#news {
+    height: 200px;
+    overflow-y: auto;
+    background: #f6f6f6;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+#active-laws {
+    height: 130px;
+    overflow-y: auto;
+}

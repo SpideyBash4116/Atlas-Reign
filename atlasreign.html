@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Reign - Alpha 0.2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Atlas Reign – Alpha</h1>
+
+<div class="container">
+
+    <!-- Stats Panel -->
+    <div class="panel" id="stats-panel">
+        <h2>Nation Stats</h2>
+
+        <div class="stat">
+            <label>Population:</label>
+            <span id="population">0</span>
+        </div>
+
+        <div class="statbar">
+            <label>Economy</label>
+            <div class="bar-bg">
+                <div class="bar-fill" id="economy-bar"></div>
+            </div>
+        </div>
+
+        <div class="statbar">
+            <label>Happiness</label>
+            <div class="bar-bg">
+                <div class="bar-fill" id="happiness-bar"></div>
+            </div>
+        </div>
+
+        <div class="statbar">
+            <label>Military</label>
+            <div class="bar-bg">
+                <div class="bar-fill" id="military-bar"></div>
+            </div>
+        </div>
+
+        <div class="statbar">
+            <label>Environment</label>
+            <div class="bar-bg">
+                <div class="bar-fill" id="environment-bar"></div>
+            </div>
+        </div>
+
+        <button id="nextTurn">Next Turn</button>
+    </div>
+
+    <!-- Laws Panel -->
+    <div class="panel" id="laws-panel">
+        <h2>Laws</h2>
+
+        <button onclick="enactLaw('environment')">Environmental Protection Act</button>
+        <button onclick="enactLaw('economy')">Tax Incentive Program</button>
+        <button onclick="enactLaw('military')">Mandatory Military Service</button>
+
+        <h3>Active Laws</h3>
+        <ul id="active-laws"></ul>
+    </div>
+
+    <!-- News Panel -->
+    <div class="panel" id="news-panel">
+        <h2>National News</h2>
+        <div id="news"></div>
+    </div>
+
+    <!-- Map Panel -->
+    <div class="panel">
+        <h2>Country Map</h2>
+        <canvas id="map" width="300" height="300"></canvas>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
