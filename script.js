@@ -85,6 +85,29 @@ function refreshLawsUI() {
     });
 }
 
+function startFestival(type) {
+    let msg = "";
+    switch(type) {
+        case "cultural":
+            country.happiness += 10;
+            country.economy -= 3;
+            msg = "Cultural Festival celebrated! Happiness +10, Economy -3";
+            break;
+        case "music":
+            country.happiness += 8;
+            country.economy -= 2;
+            country.environment -= 1;
+            msg = "Music Festival celebrated! Happiness +8, Economy -2, Environment -1";
+            break
+        case "eco":
+            country.happiness += 5;
+            country.economy -= 2;
+            country.environment =+ 3;
+            msg = "Eco Festival celebrated! Happiness +5, Economy -2, Environment +3";
+            break;
+    }
+}
+
 // Turn calculation
 function nextTurn() {
 
@@ -113,6 +136,7 @@ function nextTurn() {
 
     // News summary
     addNews("A new year begins. The nation continues to evolve.");
+    adNews(msg)
 
     country.year++;
     updateUI();
