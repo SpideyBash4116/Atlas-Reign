@@ -35,9 +35,13 @@ function updateUI() {
     document.getElementById("population").textContent = country.population;
 
     document.getElementById("economy-bar").style.width = country.economy + "%";
+    document.getElementById("economy-tip").textContent = `${country.economy}/100 (${country.economy}%)`;
     document.getElementById("happiness-bar").style.width = country.happiness + "%";
+    document.getElementById("happiness-tip").textContent = `${country.happiness}/100 (${country.happiness}%)`;
     document.getElementById("military-bar").style.width = country.military + "%";
+    document.getElementById("military-tip").textContent = `${country.military}/100 (${country.military}%)`;
     document.getElementById("environment-bar").style.width = country.environment + "%";
+    document.getElementById("environment-tip").textContent = `${country.environment}/100 (${country.environment}%)`;
 }
 
 // Simple map generator
@@ -102,7 +106,7 @@ function startFestival(type) {
         case "eco":
             country.happiness += 5;
             country.economy -= 2;
-            country.environment =+ 3;
+            country.environment += 3;
             msg = "Eco Festival celebrated! Happiness +5, Economy -2, Environment +3";
             break;
     }
@@ -136,7 +140,7 @@ function nextTurn() {
 
     // News summary
     addNews("A new year begins. The nation continues to evolve.");
-    adNews(msg)
+    addNews(msg)
 
     country.year++;
     updateUI();
