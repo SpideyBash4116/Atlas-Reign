@@ -23,6 +23,7 @@ function clamp(v) {
 // Add news entry
 function addNews(msg) {
     let div = document.getElementById("news");
+    if (!div) return;
     let p = document.createElement("p");
     p.textContent = `[Year ${country.year}] ${msg}`;
     div.appendChild(p);
@@ -31,22 +32,34 @@ function addNews(msg) {
 
 // Render stats on screen
 function updateUI() {
+    const popEl = document.getElementById("population");
+    if (popEl) popEl.textContent = country.population;
 
-    document.getElementById("population").textContent = country.population;
+    const economyBar = document.getElementById("economy-bar");
+    const econTip = document.getElementById("economy-tip");
+    if (economyBar) economyBar.style.width = country.economy + "%";
+    if (econTip) econTip.textContent = `${country.economy}/100 (${country.economy}%)`;
 
-    document.getElementById("economy-bar").style.width = country.economy + "%";
-    document.getElementById("economy-tip").textContent = `${country.economy}/100 (${country.economy}%)`;
-    document.getElementById("happiness-bar").style.width = country.happiness + "%";
-    document.getElementById("happiness-tip").textContent = `${country.happiness}/100 (${country.happiness}%)`;
-    document.getElementById("military-bar").style.width = country.military + "%";
-    document.getElementById("military-tip").textContent = `${country.military}/100 (${country.military}%)`;
-    document.getElementById("environment-bar").style.width = country.environment + "%";
-    document.getElementById("environment-tip").textContent = `${country.environment}/100 (${country.environment}%)`;
+    const happinessBar = document.getElementById("happiness-bar");
+    const happyTip = document.getElementById("happiness-tip");
+    if (happinessBar) happinessBar.style.width = country.happiness + "%";
+    if (happyTip) happyTip.textContent = `${country.happiness}/100 (${country.happiness}%)`;
+
+    const militaryBar = document.getElementById("military-bar");
+    const milTip = document.getElementById("military-tip");
+    if (militaryBar) militaryBar.style.width = country.military + "%";
+    if (milTip) milTip.textContent = `${country.military}/100 (${country.military}%)`;
+
+    const envBar = document.getElementById("environment-bar");
+    const envTip = document.getElementById("environment-tip");
+    if (envBar) envBar.style.width = country.environment + "%";
+    if (envTip) envTip.textContent = `${country.environment}/100 (${country.environment}%)`;
 }
 
 // Simple map generator
 function drawMap() {
     let c = document.getElementById("map");
+    if (!c) return;
     let ctx = c.getContext("2d");
 
     for (let x = 0; x < 10; x++) {
@@ -64,23 +77,28 @@ function enactLaw(type) {
     if (type === "environment") {
         law = { name: "Environmental Protection Act", duration: 5, environment: +3, economy: -2 };
         addNews("Environmental Protection Act passed.");
-    }
-    else if (type === "economy") {
+    } else if (type === "economy") {
         law = { name: "Tax Incentive Program", duration: 4, economy: +4, happiness: -1 };
         addNews("Tax Incentive Program passed.");
-    }
-    else if (type === "military") {
+    } else if (type === "military") {
         law = { name: "Mandatory Military Service", duration: 6, military: +4, happiness: -3 };
         addNews("Mandatory Military Service enacted.");
+    } else {
+        // Unknown law type — ignore
+        addNews(`Attempted to enact unknown law: ${type}`);
+        return;
     }
 
-    activeLaws.push(law);
-    refreshLawsUI();
+    if (law) {
+        activeLaws.push(law);
+        refreshLawsUI();
+    }
 }
 
 // Refresh active law list
 function refreshLawsUI() {
     let ul = document.getElementById("active-laws");
+    if (!ul) return;
     ul.innerHTML = "";
     activeLaws.forEach(l => {
         let li = document.createElement("li");
@@ -102,14 +120,25 @@ function startFestival(type) {
             country.economy -= 2;
             country.environment -= 1;
             msg = "Music Festival celebrated! Happiness +8, Economy -2, Environment -1";
-            break
+            break;
         case "eco":
             country.happiness += 5;
             country.economy -= 2;
             country.environment += 3;
             msg = "Eco Festival celebrated! Happiness +5, Economy -2, Environment +3";
             break;
+        default:
+            msg = "Unknown festival attempted.";
     }
+    // show festival news immediately
+    addNews(msg);
+
+    // clamp after festival effects
+    country.economy = clamp(country.economy);
+    country.happiness = clamp(country.happiness);
+    country.environment = clamp(country.environment);
+
+    updateUI();
 }
 
 // Turn calculation
@@ -120,10 +149,10 @@ function nextTurn() {
 
     // Apply laws
     activeLaws.forEach(l => {
-        if (l.economy) country.economy += l.economy;
-        if (l.happiness) country.happiness += l.happiness;
-        if (l.military) country.military += l.military;
-        if (l.environment) country.environment += l.environment;
+        if (typeof l.economy === 'number') country.economy += l.economy;
+        if (typeof l.happiness === 'number') country.happiness += l.happiness;
+        if (typeof l.military === 'number') country.military += l.military;
+        if (typeof l.environment === 'number') country.environment += l.environment;
 
         l.duration -= 1;
     });
@@ -138,9 +167,11 @@ function nextTurn() {
     country.military = clamp(country.military);
     country.environment = clamp(country.environment);
 
+    // Prevent negative population
+    country.population = Math.max(0, country.population);
+
     // News summary
     addNews("A new year begins. The nation continues to evolve.");
-    addNews(msg)
 
     country.year++;
     updateUI();
@@ -151,6 +182,8 @@ window.onload = function() {
     drawMap();
     updateUI();
     addNews("Welcome to Atlas Reign. Your nation awaits your command.");
-};
 
-document.getElementById("nextTurn").onclick = nextTurn;
+    // attach handler after DOM loaded
+    const nextBtn = document.getElementById("nextTurn");
+    if (nextBtn) nextBtn.onclick = nextTurn;
+};
