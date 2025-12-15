@@ -177,6 +177,12 @@ function nextTurn() {
     updateUI();
 }
 
+// Winter theme
+const winterTheme = true;
+if (winterTheme) {
+    document.body.classList.add("winter");
+}
+
 // Initialize
 window.onload = function() {
     drawMap();
