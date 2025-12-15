@@ -89,3 +89,12 @@ h1 {
     visibility: visible;
     opacity: 1;
 }
+
+/* Winter theme */
+body.winter {
+    background: linear-gradient(#cfe9ff, #ffffff);
+    color: #1a2b44
+}
+.winter h1::after {
+    content: " ❄️🎄"
+}
