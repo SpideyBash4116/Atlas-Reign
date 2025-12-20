@@ -5,3 +5,4 @@ Atlas Reign must be run on a local server.
 1. Download or clone the repository
 2. Run a local server:
    python -m http.server
+And you're done!
