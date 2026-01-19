@@ -1,41 +1,4 @@
-Atlas Reign
+NOTE: This game has started to be devoid of updates, normally because I am busy of otherstuff. I made this to test my programming skills.
 
-A real-time country simulation game built with HTML, CSS, and JavaScript.
-You control every aspect of your nation — economy, population, power, environment, diplomacy, and more — as it evolves year by year.
-
-About the Game
-
-Atlas Reign is a lightweight, browser-based strategy game where you manage a fictional country and watch it grow (or collapse).
-Every year, your choices affect your nation’s:
-
-Population
-
-Economy
-
-Happiness
-
-Military
-
-Environment
-
-Nation power
-
-Events & laws (coming soon)
-
-The goal? Create the most stable, powerful, and successful nation possible.
-
-Features
-
-Real-time stat simulation
-
-Dynamic yearly updates
-
-Randomized events (WIP)
-
-Custom laws system (coming soon)
-
-News channel system (coming soon)
-
-Interactive UI with live stats
-
-Simple and easy to mod
+This thing is a real time country simulator that is still in alpha and not made for fun, but for testing.
+I don't want to spoil anything so I won't tell you what is in the game
