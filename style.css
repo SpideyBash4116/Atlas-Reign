@@ -90,6 +90,11 @@ h1 {
     opacity: 1;
 }
 
+body.collapse {
+    background: #3a0000;
+    color: #ffcccc;
+}
+
 /* Winter theme */
 body.winter {
     background: linear-gradient(#cfe9ff, #ffffff);
