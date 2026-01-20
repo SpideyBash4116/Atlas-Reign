@@ -177,6 +177,15 @@ function nextTurn() {
     updateUI();
 }
 
+// Protests and riots
+
+if (country.happiness < 40) {
+    addNews("Widespread protests erupt across the nation!")
+}
+if (country.happiness < 20) {
+    addNews("Riots have broken out in several major cities!")
+}
+
 // Winter theme
 const winterTheme = true;
 if (winterTheme) {
