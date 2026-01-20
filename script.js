@@ -210,6 +210,7 @@ if (country.happiness < 15) {
 }
 if (country.happiness < 10) {
     addNews("ALERT: RIOTS HAVE MADE MAJOR IMPACT ON THE NATION'S STABILITY; COLLAPSE IS IMMINENT!")
+    document.body.classList.add("collapse");
 }
 
 // Winter theme
