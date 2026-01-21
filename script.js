@@ -225,6 +225,9 @@ if (country.support < 40) {
     return;
 }
 
+// Save / Load
+localStorage.setItem("atlasSave", JSON.stringify(country));
+
 // Initialize
 window.onload = function() {
     drawMap();
