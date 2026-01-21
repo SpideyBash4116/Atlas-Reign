@@ -90,13 +90,13 @@ h1 {
     opacity: 1;
 }
 
-// On collapse
+/* On collapse */
 body.collapse {
     background: #3a0000;
     color: #ffcccc;
 }
 
-// New icons
+/* New icons */
 .bar-fill.low { background: #e74c3c; }
 .bar-fill.mid { background: #f1c40f; }
 .bar-fill.high { background: #2ecc71; }
