@@ -219,6 +219,12 @@ if (winterTheme) {
     document.body.classList.add("winter");
 }
 
+// Political system
+if (country.support < 40) {
+    addNews("The parliament blocks your proposed law.")
+    return;
+}
+
 // Initialize
 window.onload = function() {
     drawMap();
