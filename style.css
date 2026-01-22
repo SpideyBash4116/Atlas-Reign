@@ -90,17 +90,6 @@ h1 {
     opacity: 1;
 }
 
-/* On collapse */
-body.collapse {
-    background: #3a0000;
-    color: #ffcccc;
-}
-
-/* New icons */
-.bar-fill.low { background: #e74c3c; }
-.bar-fill.mid { background: #f1c40f; }
-.bar-fill.high { background: #2ecc71; }
-
 /* Winter theme */
 body.winter {
     background: linear-gradient(#cfe9ff, #ffffff);
