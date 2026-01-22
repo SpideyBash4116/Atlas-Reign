@@ -12,9 +12,6 @@ let country = {
     year: 1
 };
 
-// Game over
-let gameOver = false;
-
 // Active laws list
 let activeLaws = [];
 
@@ -180,53 +177,11 @@ function nextTurn() {
     updateUI();
 }
 
-// Check the game over conditions
-
-function checkGameOver() {
-    if (country.happiness <= 0) {
-        gameOver = true;
-        addNews("NATIONAL ALERT: THE GOVERNMENT HAS COLLAPSED. ORDER HAS BROKEN DOWN NATIONWIDE.")
-        alert(
-            "GAME OVER\n\n" +
-            "Your country has collapsed due to total public unrest.\n" +
-            "Year survived: " + country.year
-        );
-        document.getElementById("nextTurn").disabled = true;
-    }
-}
-checkGameOver();
-if (gameOver) return;
-
-// Protests and riots
-
-if (country.happiness < 40) {
-    addNews("Widespread protests erupt across the nation!")
-}
-if (country.happiness < 30) {
-    addNews("Riots have broken out in several major cities!")
-}
-if (country.happiness < 15) {
-    addNews("ALERT: THE NATION TEETERS ON THE NEARGE OF COLLAPSE!")
-}
-if (country.happiness < 10) {
-    addNews("ALERT: RIOTS HAVE MADE MAJOR IMPACT ON THE NATION'S STABILITY; COLLAPSE IS IMMINENT!")
-    document.body.classList.add("collapse");
-}
-
 // Winter theme
 const winterTheme = true;
 if (winterTheme) {
     document.body.classList.add("winter");
 }
-
-// Political system
-if (country.support < 40) {
-    addNews("The parliament blocks your proposed law.")
-    return;
-}
-
-// Save / Load
-localStorage.setItem("atlasSave", JSON.stringify(country));
 
 // Initialize
 window.onload = function() {
@@ -237,5 +192,4 @@ window.onload = function() {
     // attach handler after DOM loaded
     const nextBtn = document.getElementById("nextTurn");
     if (nextBtn) nextBtn.onclick = nextTurn;
-    checkGameOver();
 };
